@@ -1,0 +1,269 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>BackupSpace. Хостинг для бэкапов</title>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,400&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" />
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+<script type="text/javascript">
+	$(document).ready(function(e) {
+        $('.t_footer a').fancybox({border:0, padding:0});
+		$('.range').each(function(){
+			var obj = $(this);
+			var target = obj.parents('.t_cell').find('span');
+			$(this).slider({
+			  range: "min",
+			  value: target.text(),
+			  min: obj.data('min'),
+			  max: obj.data('max'),
+			  slide: function( event, ui ) {
+				target.text(ui.value);
+				calculate();
+			  }
+			});
+		});
+		function calculate(){
+			var total = 0;
+			$('#privat .t_cell span.value').each(function(){
+				total += parseInt($(this).text());
+			});
+			$('#privat .t_sub div').html(total+' <span>р.</span>');
+		}
+		$('.down, .up').click(function(){
+			$('.crange').hide();
+			$(this).parent().find('.crange').show();
+			return false;
+		});
+		$(document).click(function(e){
+			var t = $(e.target);
+			if( !t.parents('.crange').hasClass('crange')){
+				$('.crange').hide();
+			}
+		});
+		calculate();
+    });
+</script>
+</head>
+
+<body>
+    <div id="header">
+        <div class="wraper">
+        	<a href="#" id="logo">
+            	<span>BackupSpace</span>
+                место для бэкапа
+            </a>
+            <div id="contacts">
+            	<span>Пишите нам:</span>
+                sales@backupspace.ru
+            </div>
+        </div>
+    </div>
+    <div id="slogan">
+    	<div id="window">
+        	<div>Храним бэкапы</div>
+            <div><span>теперь у вашего бэкапа есть место!</span></div>
+        </div>
+    </div>
+    <div id="body">
+    	<div class="wraper">
+        	<div class="price_table">
+            	<div class="t_colum left">
+                	<div class="t_header">
+                    
+                    </div>
+                    <div class="t_sub">
+                    	Тарифный план
+                    </div>
+                    <div class="t_cell">
+                    	Объем пространства
+                    </div>
+                    <div class="t_cell">
+                    	Техническая поддержка 
+                    </div>
+                    <div class="t_cell">
+                        Шифрование данных
+                    </div>
+                    <div class="t_cell">
+                        Двойное резервирование
+                    </div>
+                    <div class="t_cell">
+                    	Базы данных MySQL
+                    </div>
+                    <div class="t_cell">
+                    	Пропускная способность
+                    </div>
+                    <div class="t_cell">
+                    	Наличие  SSD
+                    </div>
+                    <div class="t_cell">
+                    	Колличество аккаунтов
+                    </div>
+                    <div class="t_footer">
+                    
+                    </div>
+                </div>
+                <div class="t_colum info">
+                	<div class="t_header">
+                    	лайт
+                    </div>
+                    <div class="t_sub">
+                    	<div>250 <span>р.</span></div>
+                        в месяц
+                    </div>
+                	<div class="t_cell">
+                    	100 ГБ
+                    </div>
+                    <div class="t_cell">
+                    	5/2
+                    </div>
+                    <div class="t_cell">
+                        -
+                    </div>
+                    <div class="t_cell">
+                        -
+                    </div>
+                    <div class="t_cell">
+                    	-
+                    </div>
+                    <div class="t_cell">
+                    	1 Гбит/с
+                    </div>
+                    <div class="t_cell">
+                    	-
+                    </div>
+                    <div class="t_cell">
+                    	1
+                    </div>
+                    <div class="t_footer">
+                    	<a href="#order">заказать</a>
+                    </div>
+                </div>
+                <div class="t_colum info">
+                	<div class="t_header">
+                    	стандарт
+                    </div>
+                	<div class="t_sub">
+                    	<div>950 <span>р.</span></div>
+                        в месяц
+                    </div>
+                	<div class="t_cell">
+                    	500 ГБ
+                    </div>
+                    <div class="t_cell">
+                        24/7
+                    </div>
+                    <div class="t_cell">
+                    	-
+                    </div>
+                    <div class="t_cell">
+                        -
+                    </div>
+                    <div class="t_cell">
+                    	+
+                    </div>
+                    <div class="t_cell">
+                    	1 Гбит/с
+                    </div>
+                    <div class="t_cell">
+                    	-
+                    </div>
+                    <div class="t_cell">
+                    	1
+                    </div>
+                    <div class="t_footer">
+                    	<a href="#order">заказать</a>
+                    </div>
+                </div>
+                <div class="t_colum info" id="privat">
+                	<div class="t_header">
+                    	индивидуальный
+                    </div>
+                	<div class="t_sub">
+                    	<div>0 <span>р.</span></div>
+                        в месяц
+                    </div>
+                	<div class="t_cell">
+                    	<a href="#" class="down">-</a><span class="value">1500</span><a href="#" class="up">+</a>
+                        <div class="crange"><div class="range" data-min="1500" data-max="9000"></div></div>
+                    </div>
+                    <div class="t_cell">
+                        24/7
+                    </div>
+                    <div class="t_cell">
+                        +
+                    </div>
+                    <div class="t_cell">
+                        +
+                    </div>
+                    <div class="t_cell">
+                    	+
+                    </div>
+                    <div class="t_cell">
+                    	1 Гбит/с
+                    </div>
+                    <div class="t_cell">
+                    	по запросу
+                    </div>
+                    <div class="t_cell">
+                    	<a href="#" class="down">-</a><span class="value">1</span><a href="#" class="up">+</a>
+                        <div class="crange"><div class="range" data-min="1" data-max="100"></div></div>
+                    </div>
+                    <div class="t_footer">
+                    	<a href="#order">заказать</a>
+                    </div>
+                </div>
+            </div>
+            <div class="table_shadow"> </div>
+            <div class="block left">
+                <h3>Лучшие решения  для наших клиентов</h3>
+                <p>Сервис хостинга бэкапов представляет из себя надежное хранилище данных, расположенное на дисковых массивах (RAID10). Вы можете быть уверены в надежности ваших данных, так как для данной услуги мы используем исключительно диски Enterprise-класса. Хранилище подключено к коммутатору выделенным портом 10 Гбит/с.
+                </p>
+            </div>
+            <div class="block right">
+            	<h3>On-line поддержка<br>24 часа в сутки</h3>
+                <p>
+                    Мы готовы помочь вам в любое время, мы с пониманием относимся к каждой просьбе и не оставляем никого без внимания и поддержки! Если вы работаете с нами, можете быть уверены - вы получите качественный сервис за разумную плату. Пишите нам по любым возникшим вопросам, если вам нужно не просто место для бэкапа, а надежный хостинг - мы готовы вам помочь! Мы любим своих клиентов и обязательно докажем это на деле, вы поверите, что бывает отличный сервис за разумные деньги! 
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    <div id="social">
+    	<div class="wraper">
+    		<span>следите за нами: </span>
+            <a href="#" class="social soc_1"></a>
+            <a href="#" class="social soc_2"></a>
+            <a href="#" class="social soc_3"></a>
+            <a href="#" class="social soc_4"></a>
+            <a href="#" class="social soc_5"></a>
+        </div>
+    </div>
+    <div id="payment">
+    	<div class="wraper">
+        	Принимаем к оплате
+            <img src="img/payment.png" align="absmiddle"/>
+        </div>
+    </div>
+    <div id="footer">
+    	<div class="wraper">
+        	© 2015 <span>BackupSpace. Хостинг для ваших бэкапов.</span> <span>Все права защищены.</span>
+        </div>
+    </div>
+    <div style="display:none">
+    	<div id="order">
+        	<form>
+            	<h3>Оформление заказа</h3>
+                <input type="text" placeholder="Ваше имя"/><br/>
+                <input type="text" placeholder="Ваш телефон или email"/><br/>
+                <input type="submit" value="Заказать"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
